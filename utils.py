@@ -1,6 +1,6 @@
 import turtle
 
-
+#finds the max in the list of numbers
 def find_max(numbers):
     maximum = numbers[0]
     for item in numbers:
@@ -8,12 +8,12 @@ def find_max(numbers):
             maximum = item
     return maximum
 
-
+#creats a blank underline
 def createhid(word, accessor):
     stick = "_" * len(word)
     return stick
 
-
+#creates man using turtle
 def makeman(man):
     man.color("green")
     man.pencolor("black")
@@ -27,7 +27,7 @@ def makeman(man):
     man.goto(150, 200)
     man.goto(150, 150)
 
-
+#what happens each time guess is wrong
 def hurt(counter, man):
     if counter == 1:
         man.penup()
@@ -49,7 +49,7 @@ def hurt(counter, man):
         man.goto(150, 90)
         man.goto(160, 80)
 
-
+#actual game
 def hangman():
     wn = turtle.Screen()
     wn.bgcolor("green")
@@ -57,12 +57,18 @@ def hangman():
     makeman(man)
     letters = []
     word = input("Word: ")
+
+    #creates space so second player won't see inputted word
     for item in range(20):
         print()
     stick = createhid(word, "_")
     counter = 0
     chack = 0
     print(stick + " Word Length: " + str(len(word)))
+
+    #while the guessed word does not equal the actual word 
+    #and the amount of wrong guess is under 6,
+    #ask for a guess
     while word != stick and counter < 6:
         print(f"Used Letters: {letters}")
         guess = input("letter: ")
